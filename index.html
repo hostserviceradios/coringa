@@ -1,0 +1,594 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>xat online chat. Profile for Hostradios</title>
+<LINK REL="SHORTCUT ICON" href="//xat.com/web_gear/chat/icon.ico">
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+body {
+	background: radial-gradient(#333, #141414)
+}
+
+:root {
+	--font-1: Roboto, sans-serif;
+	--font-2: Oswald, sans-serif;
+	--font-3: 'Yusei Magic', sans-serif;
+	--red: #D80000;
+	--blue: #D80000
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box
+}
+
+:before,
+:after {
+	content: '';
+	position: absolute
+}
+
+a {
+	display: inline-block;
+	text-decoration: none
+}
+
+span {
+	display: inline-block
+}
+
+ul {
+	list-style: none
+}
+
+#jd-main {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	color: #FFF;
+	font-family: var(--font-3);
+	font-size: 16px;
+	overflow: hidden
+}
+
+.jd-app {
+	width: 840px;
+	height: 100vh;
+	margin: 0 auto;
+	position: relative
+}
+
+.jd-home {
+	width: 840px;
+	height: 480px;
+	border-radius: 8px;
+	background: url(https://img.xatblog.net/image/U204r3BxJ.png), #000;
+	background-size: cover;
+	position: relative;
+	top: calc(50% - 240px);
+	box-shadow: 0 0 50px rgba(0, 0, 0, .6);
+	padding: 20px
+}
+
+.jd-header {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	justify-content: Space-between;
+	align-items: center
+}
+
+.jd-header h1 {
+	color: var(--red);
+	font-weight: 300
+}
+
+.jd-menu {
+	width: 400px;
+	height: 40px;
+	display: flex;
+	position: relative
+}
+
+.jd-menu li {
+	width: 100px;
+	height: 40px;
+	color: #FFF;
+	position: relative;
+	cursor: pointer
+}
+
+.jd-menu li a {
+	color: #fff;
+	transition: all .2s ease-out
+}
+
+.jd-submenu {
+	position: absolute;
+	width: 100px;
+	height: 0;
+	display: flex;
+	flex-direction: column;
+	right: 0;
+	top: 40px;
+	background: #111;
+	transition: all .3s ease-out;
+	overflow: hidden
+}
+
+.jd-item {
+	width: 100px;
+	height: 40px;
+	color: red
+}
+
+.jd-menu li:hover ul {
+	top: 40px;
+	height: 160px
+}
+
+.jd-btn:hover {
+	color: var(--white)
+}
+
+.jd-submenu li a {
+	width: 100px;
+	height: 32px;
+	background: var(--red);
+	color: #000;
+	box-shadow: 0 1px rgba(0, 0, 0, .2) inset;
+	line-height: 32px;
+	font-size: .75rem;
+	text-transform: uppercase;
+	padding-left: 10px;
+	transition: all .2s ease-out
+}
+
+.jd-submenu li a:hover {
+	color: #000;
+	padding-left: 20px
+}
+
+.jd-aside {
+	width: 320px;
+	height: auto;
+	margin-top: 20px
+}
+
+.jd-logo {
+	width: 140px;
+	margin-left: 90px
+}
+
+.jd-aside h2 {
+	text-align: center;
+	font-size: 4rem;
+	font-weight: 300;
+	line-height: 60px
+}
+
+.jd-id {
+	width: 100px;
+	height: 32px;
+	background: var(--red);
+	border-radius: 3px;
+	text-align: center;
+	line-height: 32px;
+	color: #000;
+	margin-left: 150px;
+	margin-top: 10px
+}
+
+.jd-wel {
+	color: var(--blue);
+	line-height: 50px
+}
+
+.jd-container {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	visibility: hidden
+}
+
+[class*='jd-page'] {
+	width: 410px;
+	height: 450px;
+	position: absolute;
+	background: #000;
+	border-radius: 10px;
+	box-shadow: 0 0 50px #d80000;
+	right: 0;
+	top: calc(50% - 225px);
+	transition: all .5s ease-out;
+	transform: translateY(-100vh);
+	padding: 10px
+}
+
+.jd-title {
+	width: 100%;
+	line-height: 32px;
+	color: var(--blue);
+	font-size: 1rem;
+	font-weight: 300;
+	border-bottom: solid 1px #E1E1E1
+}
+
+.jd-close {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: #EEE;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	transition: all .2s ease-out
+}
+
+.jd-close:hover {
+	transform: rotate(180deg)
+}
+
+.jd-close:before,
+.jd-close:after {
+	width: 16px;
+	height: 2px;
+	background: var(--blue);
+	top: calc(50% - 1px);
+	left: calc(50% - 8px)
+}
+
+.jd-close:before {
+	transform: rotate(45deg)
+}
+
+.jd-close:after {
+	transform: rotate(-45deg)
+}
+
+#-jd_1:target .jd-container,
+#-jd_2:target .jd-container,
+#-jd_3:target .jd-container {
+	visibility: visible
+}
+
+#-jd_1:target .jd-page-music {
+	transform: translateY(0)
+}
+
+#-jd_2:target .jd-page-friend {
+	transform: translateY(0)
+}
+
+#-jd_3:target .jd-page-photo {
+	transform: translateY(0)
+}
+
+.jd-section {
+	width: 100%;
+	height: 370px;
+	margin-top: 10px;
+	box-shadow: 0 10px #FFF, 0 11px #E1E1E1;
+	overflow-y: auto
+}
+
+.jd-row {
+	width: 290px;
+	height: 60px;
+	background: #EFEFED;
+	margin-bottom: 10px;
+	border-left: solid 5px var(--blue);
+	display: flex;
+	transition: all .2s ease-out
+}
+
+.jd-row:hover {
+	background: #CCC
+}
+
+.jd-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: #AAA;
+	margin: 5px;
+	overflow: hidden
+}
+
+.jd-infor {
+	flex-grow: 1;
+	position: relative
+}
+
+.jd-infor a {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: var(--blue);
+	color: #000;
+	text-align: center;
+	line-height: 60px;
+	text-transform: uppercase;
+	font-size: .75rem
+}
+
+.jd-avatar img {
+	width: 100%
+}
+
+.jd-infor span,
+.jd-infor p {
+	width: 165px;
+	line-height: 30px
+}
+
+.jd-infor span {
+	color: var(--red);
+	border-bottom: solid 1px var(--blue)
+}
+
+.jd-infor p {
+	color: #222;
+	font-size: .75rem
+}
+
+.jd-song {
+	width: 100%;
+	line-height: 40px;
+	color: var(--blue);
+	text-align: center
+}
+
+.jd-video {
+	width: 390px;
+	height: 220px;
+	background: #222;
+	box-shadow: 0 10px var(--blue)
+}
+
+.jd-img {
+	width: 96%;
+	height: auto;
+	border: solid 5px var(--blue);
+	margin-bottom: 20px
+}
+
+.jd-credits {
+	width: 100%;
+	line-height: 50px;
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	color: var(--blue)
+}
+
+::-webkit-scrollbar {
+	width: 5px;
+	background: #222
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--blue);
+}
+</style>
+<div id="jd-main">
+ <div id="-jd_1">
+ <div id="-jd_2">
+ <div id="-jd_3">
+ <div id="-jd_4">
+ <div class="jd-app">
+ <div class="jd-home">
+ <div class="jd-header">
+ <h1>Personal xat.me</h1>
+ <ul class="jd-menu">
+ <li><a class="jd-btn" href="#-jd_1">Music</a></li>
+ <li><a class="jd-btn" href="#-jd_2">Friend</a></li>
+ <li><a class="jd-btn" href="#-jd_3">Photos</a></li>
+ <li>Chat
+ <ul class="jd-submenu">
+ <li><a href="https://xat.com/The store">The store</a></li>
+ <li><a href="https://xat.com/Radio0800">Radio0800</a></li>
+ <li><a href="https://xat.com/Mixhits">Mixhits</a></li>
+ <li><a href="https://xat.com/Diaenoite">Diaenoite</a></li>
+ <li><a href="https://xat.com/Doacao">Doacao</a></li>
+ </ul>
+ </li>
+ </ul>
+ </div>
+ <div class="jd-aside">
+ <img class="jd-logo" src="https://img.xatblog.net/image/JqXHwNMZZu.png" />
+ <h2>iCoringaaaaa</h2>
+ <span class="jd-id">1488693617</span>
+ <span class="jd-wel">Bem vindo ao meu xatspace</span>
+ <p class="jd-desc">
+ As vezes precisamos 
+ dos dias dificeis para
+ perceber quem e familia
+ quem e amigo e quem e passageiro.
+ </p>
+ </div>
+ </div>
+ <div class="jd-container">
+ <div class="jd-page-music">
+ <h2 class="jd-title">Music</h2>
+ <a class="jd-close" href="#jd-main"></a>
+ <div class="jd-section">
+ <span class="jd-song">Leo Magalhaes - Primeiro de abril)</span>
+ <div class="jd-video">
+<iframe width="400" height="226" src="https://www.youtube.com/embed/acXi2tbNumw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </div>
+ </div>
+ </div>
+ <div class="jd-page-friend">
+ <h2 class="jd-title">Friends</h2>
+ <a class="jd-close" href="#jd-main"></a>
+ <div class="jd-section">
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>Davin</span>
+ <p>friend</p>
+ <a href="https://xat.me/Davin">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/HqNLFbbMj8.png" />
+ </div>
+ <div class="jd-infor">
+ <span>deStacada10</span>
+ <p>friend</p>
+ <a href="https://xat.me/deStacada10">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>Tueio</span>
+ <p>friend</p>
+ <a href="https://xat.me/Tueio">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/HqNLFbbMj8.png" />
+ </div>
+ <div class="jd-infor">
+ <span>Morgan</span>
+ <p>friend</p>
+ <a href="https://xat.me/Morgan">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>saLsabacai</span>
+ <p>friend</p>
+ <a href="https://xat.me/saLsabacai">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>iago</span>
+ <p>friend</p>
+ <a href="https://xat.me/iago">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+<span>iiiBruxiii</span>
+ <p>friend</p>
+ <a href="https://xat.me/iiiBruxiii">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>SLum</span>
+ <p>friend</p>
+ <a href="https://xat.me/SLum">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>CaeL</span>
+ <p>friend</p>
+ <a href="https://xat.me/CaeL">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/HqNLFbbMj8.png" />
+ </div>
+ <div class="jd-infor">
+ <span>Nescau</span>
+ <p>friend</p>
+ <a href="https://xat.me/Nescau">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>HumanSense</span>
+ <p>friend</p>
+ <a href="https://xat.me/HumanSense">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>stranger</span>
+ <p>friend</p>
+ <a href="https://xat.me/stranger42">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/ZYnEqU8lG7C.png" />
+ </div>
+ <div class="jd-infor">
+ <span>especiaL1sa</span>
+ <p>friend</p>
+ <a href="https://xat.me/especiaL1sa">xat.me</a>
+ </div>
+ </div>
+ <div class="jd-row">
+ <div class="jd-avatar">
+ <img src="https://img.xatblog.net/image/HqNLFbbMj8.png" />
+ </div>
+ <div class="jd-infor">
+ <span>iBadGirL44</span>
+ <p>friend</p>
+ <a href="https://xat.me/iBadGirL44">xat.me</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="jd-page-photo">
+ <h2 class="jd-title">Photos</h2>
+ <a class="jd-close" href="#jd-main"></a>
+ <div class="jd-section">
+ <img class="jd-img" src="https://img.xatblog.net/image/tgfW4ntNG.png" />
+ <img class="jd-img" src="https://img.xatblog.net/image/WPW2kNvVT.png" />
+ <img class="jd-img" src="https://img.xatblog.net/image/3vrz7rUs1g.png" />
+ <img class="jd-img" src="https://img.xatblog.net/image/MHbhOGuck.png" />
+ </div>
+ </div>
+ </div>
+ <div class="jd-credits">
+ © 2022 by - Stranger
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+</head>
+<body>
